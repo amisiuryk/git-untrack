@@ -1,0 +1,37 @@
+<idea-plugin>
+    <id>com.tools.git.untrack</id>
+    <name>Git Untrack</name>
+    <vendor url="https://github.com/amisiuryk/git-untrack">Andrii Misiuryk</vendor>
+
+    <description><![CDATA[Removes files from the Git index while keeping them on disk. Adds an <b>Untrack</b> action to the Git menus
+        that runs <code>git rm --cached</code> on the selection, so the next commit deletes the files from the repository.
+        <ul>
+            <li>Folders are untracked recursively; unversioned and ignored files are skipped.</li>
+            <li>Works across several repositories at once.</li>
+            <li>Files with partially staged changes can be force untracked.</li>
+            <li>Undo from the notification.</li>
+        </ul>
+        Nothing is committed automatically.]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>Git4Idea</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="Git Untrack" displayType="BALLOON"/>
+        <applicationConfigurable id="vcs.GitUntrack"
+                                 parentId="project.propVCSSupport.Mappings"
+                                 displayName="Git Untrack"
+                                 instance="com.tools.git.untrack.settings.GitUntrackConfigurable"/>
+    </extensions>
+
+    <actions>
+        <action id="GitUntrack.Untrack"
+                class="com.tools.git.untrack.ide.UntrackAction"
+                text="Untrack…"
+                description="Remove the selected files from the Git index and keep them on disk">
+            <add-to-group group-id="Git.FileActions" anchor="after" relative-to-action="Git.Add"/>
+            <add-to-group group-id="ChangesViewPopupMenu" anchor="after" relative-to-action="ChangesView.AddUnversioned"/>
+            <add-to-group group-id="Git.Stage.Tree.Menu" anchor="after" relative-to-action="Git.Stage.Add"/>
+        </action>
+    </actions>
+</idea-plugin>

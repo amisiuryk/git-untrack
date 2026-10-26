@@ -1,0 +1,14 @@
+.gradle/
+.intellijPlatform/
+build/
+out/
+.kotlin/
+
+# IntelliJ IDEA
+.idea/*
+!.idea/vcs.xml
+*.iml
+.vscode/
+.DS_Store
+
+/CONTEXT.md
