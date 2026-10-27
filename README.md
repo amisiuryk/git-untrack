@@ -2,8 +2,6 @@
 
 An IntelliJ IDEA plugin that adds **Untrack…** to the Git menus: it removes the selected files from the Git index (`git rm --cached`) and keeps them on disk. The next commit deletes them from the repository. Nothing is committed automatically.
 
-See [CONTEXT.md](CONTEXT.md) for the terms used.
-
 ## Where to find it
 
 - **Git → Current File** and the project view's **Git** context menu, right after **Add**.
